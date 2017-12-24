@@ -39,14 +39,14 @@ class Cabify(APIView):
     def put(self, request, pk=None):
         ''' Handles updating an object '''
 
-        return Response({'method':'put'})
+        return Response({'method': 'put'})
 
     def patch(self, request, pk=None):
         ''' Only updates fields provided in the request '''
 
-        return Response({'method':'patch'})
+        return Response({'method': 'patch'})
 
     def delete(self, request, pk=None):
         ''' Deletes an object '''
 
-        return Response({'method':'delete'})
+        return Response({'method': 'delete'})
