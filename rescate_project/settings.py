@@ -145,3 +145,5 @@ EMAIL_PORT = 25
 EMAIL_HOST_USER = 'lanzaroteee@gmail.com'
 EMAIL_HOST_PASSWORD = 'surfer22'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+AUTH_USER_MODEL = 'profiles_api.UserProfile'
