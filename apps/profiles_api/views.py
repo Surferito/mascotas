@@ -22,15 +22,31 @@ class Cabify(APIView):
     def post(self, request):
         ''' Create a message with the variable that receives '''
 
+        print('imprimimos request.data: ', request.data)
+
         serializer = serializers.CabifySerializer(data=request.data)
 
         if serializer.is_valid():
             name = serializer.data.get('name')
             surname = serializer.data.get('surname')
             print('variable name: ', name, 'variable surname: ', surname)
-            
+
             message = 'Devolviendo el nombre recibido: {}, apellido: {}'.format(name, surname)
             return Response({'mensaje': message})
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    def put(self, request, pk=None):
+        ''' Handles updating an object '''
+
+        return Response({'method':'put'})
+
+    def patch(self, request, pk=None):
+        ''' Only updates fields provided in the request '''
+
+        return Response({'method':'patch'})
+
+    def delete(self, request, pk=None):
+        ''' Deletes an object '''
+
+        return Response({'method':'delete'})
