@@ -1,0 +1,17 @@
+
+# self defined -- Django
+db.sqlite3
+media
+static
+
+### Pycharm ###
+.idea/*
+
+### Mac ###
+.DS_Store
+
+venv
+*.pyc
+staticfiles
+.env
+.idea
