@@ -1,11 +1,12 @@
-from datetime import datetime
-from rest_framework import serializers
 
-class Comment(object):
-    def __init__(self, email, content, created=None):
-        self.email = email
-        self.content = content
-        self.created = created or datetime.now()
 
-comment = Comment(email='leila@example.com', content='foo bar')
+def probando_if():
 
+    h = 3
+    if h == 2:
+        print('h igual a 1')
+        return True
+
+    return h == 2
+
+print(probando_if())
