@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 
 from rest_framework import viewsets
 from rest_framework.response import Response
-from . import serializers
+from . import serializers, models
 from rest_framework import status
 
 class Cabify(APIView):
@@ -97,3 +97,9 @@ class HelloViewSet(viewsets.ViewSet):
         """Handles updating part of an object."""
 
         return Response({'http_method': 'PATCH'})
+
+class UserProfileViewSet(viewsets.ModelViewSet):
+    """Handles creating, updating profiles"""
+
+    serializer_class = serializers.UserProfileSerializer
+    queryset = models.UserProfile.objects.all()
