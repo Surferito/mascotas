@@ -4,7 +4,9 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework import viewsets
 from rest_framework.response import Response
 from . import serializers, models, permissions
-from rest_framework import status
+from rest_framework import status, filters
+from rest_framework.authtoken.serializers import AuthTokenSerializer
+from rest_framework.authtoken.views import ObtainAuthToken
 
 class Cabify(APIView):
     ''' Esta clase hace un request a cabify, ordena y filtra los valores '''
@@ -105,3 +107,20 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     queryset = models.UserProfile.objects.all()
     authentication_classes = (TokenAuthentication,)
     permission_classes = (permissions.UpdateOwnProfile,)
+
+    # anadimos filtros a esta vista para poder buscar usuarios por nombre o email
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('email',)
+
+
+class LoginViewSet(viewsets.ViewSet):
+    """Check email and password and sends an auth token"""
+
+    serializer_class = AuthTokenSerializer
+
+    def create(self, request):
+        """ Use the ObtainAuthToken ApiView to validate and create a token """
+
+        return ObtainAuthToken().post(request)
+
+
