@@ -1,7 +1,5 @@
 from rest_framework import permissions
 
-
-
 class UpdateOwnProfile(permissions.BasePermission):
     """ Allow users to edit only their own profile """
 
@@ -15,3 +13,17 @@ class UpdateOwnProfile(permissions.BasePermission):
             return True
 
         return obj.id == request.user.id
+
+
+class PostOwnStatus(permissions.BasePermission):
+    """ Allow users to update their own status """
+
+    # it returns true or false. True if user is trying to change his own profile
+    def has_object_permission(self, request, view, obj):
+        """ Check the user who is trying to change the profile, only allow if user.id == id of user making the change"""
+
+
+        if request.method in permissions.SAFE_METHODS:
+            return True
+
+        return obj.user.id == request.user.id

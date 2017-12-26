@@ -7,6 +7,7 @@ from . import serializers, models, permissions
 from rest_framework import status, filters
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 
 class Cabify(APIView):
     ''' Esta clase hace un request a cabify, ordena y filtra los valores '''
@@ -122,5 +123,18 @@ class LoginViewSet(viewsets.ViewSet):
         """ Use the ObtainAuthToken ApiView to validate and create a token """
 
         return ObtainAuthToken().post(request)
+
+class UserProfileFeedViewSet(viewsets.ModelViewSet):
+    """ Creating, reading and updating profile feed items """
+
+    authentication_classes = (TokenAuthentication,)
+    serializer_class = serializers.ProfileFeedItemSerializer
+    queryset = models.ProfileFeedItem.objects.all().order_by('-date')
+    permission_classes = (permissions.PostOwnStatus, IsAuthenticated)
+
+    def perform_create(self, serializer):
+        """ Sets the feed item to the loggin user """
+
+        serializer.save(user=self.request.user)
 
 
