@@ -26,7 +26,7 @@ SECRET_KEY = '^9$3l7ny@-@*(@2pu@*-oqqc+r53=*@!yw35=(4&l13aa=&x&*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['entorno-prueba-api.pirz4pyvqr.eu-west-3.elasticbeanstalk.com']
 
 
 # Application definition
