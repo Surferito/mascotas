@@ -26,7 +26,7 @@ SECRET_KEY = '^9$3l7ny@-@*(@2pu@*-oqqc+r53=*@!yw35=(4&l13aa=&x&*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['entorno-prueba-api.pirz4pyvqr.eu-west-3.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['entorno-prueba-api.pirz4pyvqr.eu-west-3.elasticbeanstalk.com', '127.0.0.1', ]
 
 
 # Application definition
@@ -131,7 +131,7 @@ USE_TZ = True
 
 #Para configurar los archivos estaticos a nivel aplicaciones
 STATIC_URL = '/static/'
-STATIC_ROOT = 'staticfiles'
+#STATIC_ROOT = 'static'
 STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
 
 #redirecciona despues del login
