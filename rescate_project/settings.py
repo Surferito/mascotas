@@ -131,7 +131,7 @@ USE_TZ = True
 
 #Para configurar los archivos estaticos a nivel aplicaciones
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'static')
+STATIC_ROOT = 'static'
 #STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
 
 #redirecciona despues del login
