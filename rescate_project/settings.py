@@ -130,9 +130,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 #Para configurar los archivos estaticos a nivel aplicaciones
-STATIC_URL = '/static/'
-STATIC_ROOT = 'static'
-STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
+STATIC_URL = '/static/static'
+STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'static')
+#STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
 
 #redirecciona despues del login
 LOGIN_REDIRECT_URL = reverse_lazy('solicitud_listar')
